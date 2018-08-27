@@ -1,0 +1,305 @@
+{% assign hero_full_height = true %}
+<div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ template.name }}" class="shopify-section__header">
+  <div class="header-container">
+      <div class="header-wrapper hero__header header_reduction header_min is-dark">  
+      {% if section.settings.show_announcement %}
+        {% if section.settings.home_page_only == false or template.name == 'index' %}
+          <style>
+            .announcement-bar {
+              background-color: {{ section.settings.color_bg }};
+            }
+
+            .announcement-bar--link:hover {
+              {% assign brightness = section.settings.color_bg | color_brightness %}
+
+              {% if brightness <= 192 %}
+                {% assign lightenAmount = 255 | minus: brightness | divided_by: 255 | times: 16 %}
+                background-color: {{ section.settings.color_bg | color_lighten: lightenAmount }};
+              {% else %}
+                {% assign darkenAmount = 255 | divided_by: brightness | times: 8 %}
+                background-color: {{ section.settings.color_bg | color_darken: darkenAmount }};
+              {% endif %}
+            }
+
+            .announcement-bar__message {
+              color: {{ section.settings.color_text }};
+            }
+          </style>
+
+          {% if section.settings.link == blank %}
+            <div class="announcement-bar">
+          {% else %}
+            <a href="{{ section.settings.link }}" class="announcement-bar announcement-bar--link">
+          {% endif %}
+
+            <p class="announcement-bar__message">{{ section.settings.text | escape }}</p>
+
+          {% if section.settings.link == blank %}
+            </div>
+          {% else %}
+            </a>
+          {% endif %}
+
+        {% endif %}
+      {% endif %}
+      
+
+      <header class="header white clear" role="banner">
+        <div class="wrapper wrapper--full">
+          
+          <div class="grid--full grid--table box-header">
+
+            <div class="grid__item large--one-third large--text-left medium-down--one-quarter">
+              <div class="menu-container">
+                <div class="menu-button">
+                  <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <a class="js-get-menu cursor-default link-menu site-nav__link" data-reference="box-menu">MENU</a>
+                </div>
+                <div class="nav-claritas"><img src="{{ 'icon-email.svg' | asset_url }}" />WIN CUSTOM CLARITAS</div>
+              </div>
+            </div>
+
+            <div class="grid__item large--one-third large--text-center medium-down--one-half">
+
+              {% if template.name == 'index' %}
+                <h1 class="site-header__logo large--center" itemscope itemtype="http://schema.org/Organization">
+              {% else %}
+                <div class="h1 site-header__logo large--center" itemscope itemtype="http://schema.org/Organization">
+              {% endif %}
+                {% if section.settings.logo %}
+                  {% comment %}
+                    .logo--has-inverted is only applied to the default logo if the inverted logo exists. That way it'll only be hidden on the slider when it has a backup.
+                  {% endcomment %}
+                  <a href="/" itemprop="url" class="site-header__logo-link{% if section.settings.logo-inverted %} logo--has-inverted{% endif %}">
+                     <?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 173.909 44.248" version="1.1" viewBox="0 0 173.909 44.248" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<path d="m11.727 28.594c3.054-0.751 5.366-3.492 5.366-6.78 0-3.071-2.791-6.915-6.898-6.915l-10.095 2e-3v27.374h10.899c3.927 0 6.927-3.328 6.927-6.83 0-3.578-2.795-6.594-6.199-6.851zm-10.779-13.336h9.045c3.683 0 6.101 3.509 6.101 6.562 0 3.288-2.961 6.591-5.506 6.591h-9.64v-13.153zm10.079 26.66h-10.079v-13.15h9.491l0.595 1e-3c3.616 0.335 5.893 3.437 5.893 6.682 1e-3 2.953-2.023 6.458-5.9 6.467zm107.04 0.356h0.387l5.333-12.803h11.521l5.313 12.803 0.921-1e-3 -11.716-28.225-11.759 28.226zm5.868-13.16l5.623-13.497 5.601 13.497h-11.224zm49.473-14.211v26.34l-21.375-27.19-3e-3 28.221 0.402 9e-3v-26.349l21.375 27.188 2e-3 2e-3 1e-3 -28.221h-0.402zm-141.3 27.371h0.848v-27.373h-0.848v27.373zm34.307-20.454c0-3.289-2.567-6.918-7.3-6.918l-9.176-1e-3v27.373h0.848v-13.515h7.793l7.423 13.517h0.968l-7.419-13.508c4.057-0.122 6.863-3.64 6.863-6.948zm-15.627 6.582v-13.144h8.709c3.607 0 5.921 3.506 5.921 6.565 0 3.074-2.574 6.579-6.034 6.579h-8.596zm30.933-13.495l-0.4-0.853h-1e-3v28.221h0.402v-25.35l12.125 26.187 0.453-1.041 10.944-25.147v25.361h0.848v-28.224l-11.987 27.57-12.384-26.724zm2.85-10.01h3.009l0.716 1.482h0.315l-2.538-5.256-2.532 5.253 0.315 1e-3 0.715-1.48zm1.503-3.117l1.369 2.834h-2.736l1.367-2.834zm7.114 0.059l4.44 4.717v-5.256h-0.283v4.541l-4.44-4.714v5.251h0.283v-4.539zm-30.527 4.257h-3.379v-4.796h-0.283l-1e-3 5.08h3.663v-0.284zm61.465-1e-3h-3.787v-2.187h2.34v-0.284h-2.34v-2.041h3.787v-0.283h-4.071v5.079h4.071v-0.284zm-73.315-1.198h3.01l0.716 1.482h0.315l-2.538-5.256-2.532 5.253 0.315 1e-3 0.714-1.48zm1.503-3.117l1.37 2.834h-2.736l1.366-2.834zm52.318-0.478h-2.103v5.082h2.103c1.605 0 2.578-1.053 2.578-2.545-1e-3 -1.493-0.973-2.537-2.578-2.537zm0.018 4.802h-1.837v-4.519h1.837c1.459 0 2.266 0.946 2.273 2.253-7e-3 1.307-0.814 2.266-2.273 2.266zm11.047-3.398c0-0.976-0.823-1.404-1.84-1.404h-2.371v5.076h0.283v-2.255h1.979l1.523 2.256h0.34l-1.531-2.258c1.008-0.063 1.617-0.599 1.617-1.415zm-1.678 1.134h-2.249v-2.254h2.14c0.83 0 1.502 0.383 1.502 1.118-1e-3 0.711-0.598 1.136-1.393 1.136zm-47.31 2.539h4.071v-0.284h-3.788v-2.187h2.34v-0.284h-2.34v-2.041h3.788v-0.283h-4.071v5.079zm12.597-5.078l-0.373-1e-3 -1.963 2.254-1.965-2.255-0.375 1e-3 2.152 2.47-2.275 2.61h0.375l2.087-2.395 2.087 2.395 0.376-2e-3 -2.275-2.609 2.149-2.468z" stroke="#000" stroke-miterlimit="10" stroke-width=".2"/>
+</svg>
+                  </a>
+                  {% if section.settings.logo-inverted %}
+                    <a href="/" itemprop="url" class="logo--inverted">
+                      <?xml version="1.0" encoding="UTF-8"?>
+<svg enable-background="new 0 0 173.909 44.248" version="1.1" viewBox="0 0 173.909 44.248" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<path d="m11.727 28.594c3.054-0.751 5.366-3.492 5.366-6.78 0-3.071-2.791-6.915-6.898-6.915l-10.095 2e-3v27.374h10.899c3.927 0 6.927-3.328 6.927-6.83 0-3.578-2.795-6.594-6.199-6.851zm-10.779-13.336h9.045c3.683 0 6.101 3.509 6.101 6.562 0 3.288-2.961 6.591-5.506 6.591h-9.64v-13.153zm10.079 26.66h-10.079v-13.15h9.491l0.595 1e-3c3.616 0.335 5.893 3.437 5.893 6.682 1e-3 2.953-2.023 6.458-5.9 6.467zm107.04 0.356h0.387l5.333-12.803h11.521l5.313 12.803 0.921-1e-3 -11.716-28.225-11.759 28.226zm5.868-13.16l5.623-13.497 5.601 13.497h-11.224zm49.473-14.211v26.34l-21.375-27.19-3e-3 28.221 0.402 9e-3v-26.349l21.375 27.188 2e-3 2e-3 1e-3 -28.221h-0.402zm-141.3 27.371h0.848v-27.373h-0.848v27.373zm34.307-20.454c0-3.289-2.567-6.918-7.3-6.918l-9.176-1e-3v27.373h0.848v-13.515h7.793l7.423 13.517h0.968l-7.419-13.508c4.057-0.122 6.863-3.64 6.863-6.948zm-15.627 6.582v-13.144h8.709c3.607 0 5.921 3.506 5.921 6.565 0 3.074-2.574 6.579-6.034 6.579h-8.596zm30.933-13.495l-0.4-0.853h-1e-3v28.221h0.402v-25.35l12.125 26.187 0.453-1.041 10.944-25.147v25.361h0.848v-28.224l-11.987 27.57-12.384-26.724zm2.85-10.01h3.009l0.716 1.482h0.315l-2.538-5.256-2.532 5.253 0.315 1e-3 0.715-1.48zm1.503-3.117l1.369 2.834h-2.736l1.367-2.834zm7.114 0.059l4.44 4.717v-5.256h-0.283v4.541l-4.44-4.714v5.251h0.283v-4.539zm-30.527 4.257h-3.379v-4.796h-0.283l-1e-3 5.08h3.663v-0.284zm61.465-1e-3h-3.787v-2.187h2.34v-0.284h-2.34v-2.041h3.787v-0.283h-4.071v5.079h4.071v-0.284zm-73.315-1.198h3.01l0.716 1.482h0.315l-2.538-5.256-2.532 5.253 0.315 1e-3 0.714-1.48zm1.503-3.117l1.37 2.834h-2.736l1.366-2.834zm52.318-0.478h-2.103v5.082h2.103c1.605 0 2.578-1.053 2.578-2.545-1e-3 -1.493-0.973-2.537-2.578-2.537zm0.018 4.802h-1.837v-4.519h1.837c1.459 0 2.266 0.946 2.273 2.253-7e-3 1.307-0.814 2.266-2.273 2.266zm11.047-3.398c0-0.976-0.823-1.404-1.84-1.404h-2.371v5.076h0.283v-2.255h1.979l1.523 2.256h0.34l-1.531-2.258c1.008-0.063 1.617-0.599 1.617-1.415zm-1.678 1.134h-2.249v-2.254h2.14c0.83 0 1.502 0.383 1.502 1.118-1e-3 0.711-0.598 1.136-1.393 1.136zm-47.31 2.539h4.071v-0.284h-3.788v-2.187h2.34v-0.284h-2.34v-2.041h3.788v-0.283h-4.071v5.079zm12.597-5.078l-0.373-1e-3 -1.963 2.254-1.965-2.255-0.375 1e-3 2.152 2.47-2.275 2.61h0.375l2.087-2.395 2.087 2.395 0.376-2e-3 -2.275-2.609 2.149-2.468z" stroke="#000" stroke-miterlimit="10" stroke-width=".2"/>
+</svg>
+                    </a>
+                  {% endif %}
+                {% else %}
+                  <a href="/" itemprop="url">{{ shop.name }}</a>
+                {% endif %}
+              {% if template.name == 'index' %}
+                </h1>
+              {% else %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="grid__item large--one-third large--text-right medium-down--hide">
+              <!-- begin site-nav -->
+              <ul class="site-nav_context" id="AccessibleNavRight">
+                <li class="site-nav__item site-nav__expanded-item">
+                  <form action="/search" method="get" role="search">
+                    <span class="context-menu animated-search-box">
+                      <span class="icon icon-search" aria-hidden="true"><img src="{{ 'search.svg' | asset_url  }}"></span>
+                      <input type="search" id="animated-search-box" name="q" value="" placeholder="search" aria-label="{{ 'general.search.placeholder' | t }}">
+                    </span>
+                  </form>
+                </li>
+                <li class="site-nav__item">
+                  <a href="/cart" class="site-nav__link cart-link js-drawer-open-right" aria-controls="CartDrawer">
+                    <span class="context-menu">{{ 'layout.cart.title' | t }} <span class="context-menu_num">{% if cart.item_count > 0 %}&nbsp;[&nbsp;{{cart.item_count}}&nbsp;]{% endif %}</span></span>
+                  </a>
+                </li>
+              </ul>
+              <!-- //site-nav -->
+            </div>
+            <div class="grid__item large--hide one-quarter">
+              <div class="site-nav--mobile text-right">
+                <a href="/cart" class="site-nav__link cart-link js-drawer-open-right" aria-controls="CartDrawer">
+                  <span class="icon-fallback-text">
+                    <span class="ab-icon ab-icon-bag_white" aria-hidden="true"><img src="{{ 'bag.svg' | asset_url  }}"></span>
+                    <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
+                  </span>
+                  <span class="mobileBagCount">{% if cart.item_count > 0 %}{{cart.item_count}}{% endif %}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="slide-menu">
+        <img src="{{ 'category-image-new.jpg' | asset_img_url: '500x' }}" />
+        <ul>
+          {% for link in linklists[section.settings.main_menu_link_list].links %}
+              {% assign child_list_handle = link.title | handleize %}
+               <li class="nav-li">
+                 <a class="site-nav__link" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+               </li>
+          {% endfor %}
+          <hr/>
+          {% for link in linklists[section.settings.main_menu_link_list-2].links %}
+              {% assign child_list_handle = link.title | handleize %}
+               <li class="nav-li">
+                 <a class="site-nav__link" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+               </li>
+          {% endfor %}
+            <li class="nav-li mobile-only">
+                 <a class="site-nav__link nav-claritas" href="#" title="WIN CUSTOM CLARITAS">WIN CUSTOM CLARITAS</a>
+            </li>
+        </ul>
+        <div class="search-mobile">
+          {% include 'search-bar', search_btn_style: 'btn--secondary', search_bar_location: 'search-bar--drawer' %}
+        </div>
+        <div class="sign-in-register">
+          {% if shop.customer_accounts_enabled %}
+            <li class="site-nav__item site-nav__expanded-item">
+              <a class="site-nav__link" href="/account">
+                <span class="icon-fallback-text">
+                  <span class="context-menu">
+                    {% if customer %}
+                      {{ 'layout.customer.account' | t }}
+                    {% else %}
+                      {{ 'layout.customer.log_in' | t }}
+                    {% endif %}
+                  </span>
+                </span>
+              </a>
+            </li>
+            <li class="site-nav__item site-nav__expanded-item">
+              <a class="site-nav__link" href="/account/register">
+                <span class="context-menu">
+                  {% if customer != true %}
+                    {{ 'layout.customer.create_account' | t }}
+                  {% endif %}
+                </span>
+              </a>
+            </li>
+          {% endif %}
+        </div>
+        
+        
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<script>
+const allListElements = $('#AccessibleNavRight li').not(":nth-child(1)");
+  $('#animated-search-box').click(function() {
+    allListElements.each(function(index) {
+      setTimeout(function(){
+        $(allListElements[index]).addClass('is-menu-hidden');
+      },40*(index+2));
+    });
+    $('#AccessibleNavRight li').filter(":nth-child(1)").addClass('is-search-box-visible');
+  })
+  $('#animated-search-box').focusout(function() {
+    allListElements.each(function(index) {
+      setTimeout(function(){
+        $(allListElements[(allListElements.size()-1)-index]).removeClass('is-menu-hidden');
+      },40*(index+2));
+    });
+    $('#animated-search-box').val("");
+    $('#AccessibleNavRight li').filter(":nth-child(1)").removeClass('is-search-box-visible');
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "main_menu_link_list",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+    {
+        "type": "link_list",
+        "id": "main_menu_link_list-2",
+        "label": "Menu 2",
+        "default": "main-menu"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo-inverted",
+        "label": "Inverted logo",
+        "info": "Use a lighter-colored logo when a dark slideshow image is displayed."
+      },
+      {
+        "type": "text",
+        "id": "logo_max_width",
+        "label": "Custom logo width (in pixels)",
+        "default": "180"
+      },
+      {
+        "type": "select",
+        "id": "search",
+        "options": [
+           { "value": "modal",
+             "label": "Modal"
+           },
+           { "value": "page",
+             "label": "Page"
+           },
+           { "value": "box",
+             "label": "Box"
+           },
+           { "value": "none",
+             "label": "None"
+           }
+        ],
+        "label": "Search type"
+      },
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "home_page_only",
+        "label": "Home page only",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Bar",
+        "default": "#1c1d1d"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#fff"
+      }
+    ]
+  }
+{% endschema %}
